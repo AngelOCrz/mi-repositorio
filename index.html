@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+
+    <h1>Inicio de vue.js</h1>
+    
+    <div id="app">
+        <h2 v-bind:title='message'>Programacion Orientada a Objetos</h2>
+    </div>
+    <div id="app-2">
+       <ul>   
+            <titulo-libros id="descripcion" v-for='value in libros' v-bind:titulo='value' v-bind:key='value.id'></titulo-libros>
+       </ul> 
+    </div>
+
+
+    <script>
+    
+        var app = new Vue({
+
+            el:'#app',
+            data: {
+                message: 'Este articulo fue creado en ' + new Date().toLocaleString()
+            }
+
+        })
+
+        Vue.component('titulo-libros', {
+            props: ['titulo'],
+            template: '<li><h5>{{titulo.nombre}}</h5><p>{{titulo.creacion}}</p></li>'
+        })
+
+        var app2 = new Vue({
+            el: '#app-2',
+            data:{
+                libros:[
+                    {id: 1, nombre: 'Php', creacion: "Fecha: " + new Date().toLocaleString()},
+                    {id: 2, nombre: 'C#', creacion: "Fecha: " + new Date().toLocaleString()},
+                    {id: 3, nombre: 'Pyton', creacion: "Fecha: " + new Date().toLocaleString()}
+                ]
+            }
+        })
+        
+    </script>
+
+
+</body>
+</html>
